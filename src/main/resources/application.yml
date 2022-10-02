@@ -1,0 +1,5 @@
+dimitribelfor:
+  riot:
+    api:
+      url: https://euw1.api.riotgames.com
+      key: ${RIOT_API_KEY}

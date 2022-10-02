@@ -1,4 +1,4 @@
-package com.dimitribelfor.tft_tracker
+package com.dimitribelfor.tfttracker
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

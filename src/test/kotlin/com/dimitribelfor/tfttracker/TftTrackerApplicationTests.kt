@@ -1,4 +1,4 @@
-package com.dimitribelfor.tft_tracker
+package com.dimitribelfor.tfttracker
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
