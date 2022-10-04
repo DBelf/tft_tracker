@@ -8,15 +8,22 @@ import org.springframework.web.util.DefaultUriBuilderFactory
 
 @Configuration
 @ConfigurationProperties(prefix = "dimitribelfor.riot.api")
-data class ApiConfig(var key: String = "", val basePath: String = "")
+data class ApiConfig(var key: String = "", var platformUrl: String = "", var regionUrl: String = "")
 
 @Configuration
 class RestTemplateConfig(private val apiConfig: ApiConfig) {
 
     @Bean
-    fun riotRestTemplate(restTemplateBuilder: RestTemplateBuilder) =
-        restTemplateBuilder
-            .uriTemplateHandler(DefaultUriBuilderFactory("https://euw1.api.riotgames.com"))
-            .additionalInterceptors(RiotAuthHeaderInterceptor(apiConfig.key))
-            .build()
+    fun riotPlatformRestTemplate(restTemplateBuilder: RestTemplateBuilder) =
+            restTemplateBuilder
+                    .uriTemplateHandler(DefaultUriBuilderFactory(apiConfig.platformUrl))
+                    .additionalInterceptors(RiotAuthHeaderInterceptor(apiConfig.key))
+                    .build()
+
+    @Bean
+    fun riotRegionRestTemplate(restTemplateBuilder: RestTemplateBuilder) =
+            restTemplateBuilder
+                    .uriTemplateHandler(DefaultUriBuilderFactory(apiConfig.regionUrl))
+                    .additionalInterceptors(RiotAuthHeaderInterceptor(apiConfig.key))
+                    .build()
 }
