@@ -1,0 +1,6 @@
+dimitribelfor:
+    riot:
+      api:
+        region-url: https://localhost.region
+        platform-url: https://localhost.platform
+        key: test-key
